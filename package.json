@@ -4,7 +4,6 @@
   "description": "Ingests receipts, itemizes them, and generates a weekly expense report",
   "main": "server.js",
   "scripts": {
-    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
