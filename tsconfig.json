@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "target": "es5",
+    "jsx": "react",
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "skipDefaultLibCheck": true,
+    "alwaysStrict": true,
+    "lib": [
+      "es2015",
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "webpack-env"
+    ],
+    "paths": {
+      "history": [
+        "./node_modules/@types/history/index"
+      ],
+      "react": [
+        "./node_modules/@types/react/index"
+      ]
+    }
+  }
+}
