@@ -1,12 +1,21 @@
+// using ES6 here, babel compiles it was runtime for webpack which lets
+// the code look similar to the rest of the project
+
 import path from "path";
 import webpack from "webpack";
 import {CheckerPlugin} from "awesome-typescript-loader";
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
+// making this a function allows us to access environment variables
+// see https://webpack.js.org/guides/environment-variables/
 export default (environment) => {
 
-    const env = environment.NODE_ENV;
+    let env = 'development';
+    if (environment) {
+        env = environment.NODE_ENV;
+    }
 
     const toMinimize = env === 'production';
 
@@ -18,7 +27,7 @@ export default (environment) => {
         ],
         output: {
             path: path.join(__dirname, '/dist/public'),
-            filename: 'js/app.js'
+            filename: 'js/app.js',
         },
         module: {
             rules: [
@@ -51,10 +60,13 @@ export default (environment) => {
                 }
             }),
             new CheckerPlugin(),
-            new webpack.NoEmitOnErrorsPlugin(),
             new CopyWebpackPlugin([
                 {from: path.join(__dirname, 'src', 'public', 'static')}
-            ])
+            ]),
+            new HtmlWebpackPlugin({
+                template: "src/public/static/index.html",
+                filename: "index.html"
+            })
         ],
         resolve: {
             modules: [
@@ -64,8 +76,8 @@ export default (environment) => {
             extensions: ['.ts', '.tsx', '.js', '.json']
         },
         externals: {
-            "react": "React",
-            "react-dom": "ReactDOM"
+            "react": "react",
+            "react-dom": "reactDOM"
         },
         optimization: {
             minimize: toMinimize

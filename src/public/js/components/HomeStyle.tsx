@@ -1,8 +1,8 @@
-import {Theme} from "@material-ui/core";
+import { Theme } from "@material-ui/core";
 
 const homeStyle = (theme: Theme) => ({
     root: {
-        'paddingTop': '20px',
+        "paddingTop": "20px",
     }
 });
 

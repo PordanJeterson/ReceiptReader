@@ -1,11 +1,11 @@
-import * as React from 'react';
-import {Component} from 'react';
-import {withStyles, AppBar} from "@material-ui/core";
+import * as React from "react";
+import { Component } from "react";
+import { withStyles, AppBar } from "@material-ui/core";
 
-import homeStyle from './HomeStyle';
+import homeStyle from "./HomeStyle";
 
 interface HomeProps {
-    classes: any
+    classes: any;
 }
 
 class Home extends Component<HomeProps, {}> {
@@ -21,7 +21,7 @@ class Home extends Component<HomeProps, {}> {
                     test
                 </div>
             </div>
-        )
+        );
     }
 }
 

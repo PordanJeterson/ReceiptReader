@@ -3,10 +3,7 @@ import { config } from "dotenv";
 import { app } from "./app";
 
 
-const result = config();
-console.log(result);
-console.log(result.parsed);
-console.log(process.env.PORT);
+config();
 
 /**
  * Error Handler. Provides full stack - remove for production
