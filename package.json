@@ -2,7 +2,7 @@
   "name": "receiptreader",
   "version": "1.0.0",
   "description": "Ingests receipts, itemizes them, and generates a weekly expense report",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
