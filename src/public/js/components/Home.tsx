@@ -2,6 +2,7 @@ import * as React from "react";
 import { Component } from "react";
 import { withStyles, AppBar } from "@material-ui/core";
 
+import { Tesseract } from './Tesseract';
 import homeStyle from "./HomeStyle";
 
 interface HomeProps {
@@ -18,7 +19,8 @@ class Home extends Component<HomeProps, {}> {
                     Test
                 </AppBar>
                 <div className={classes.root}>
-                    more testing
+                    Tesseract!
+                    <Tesseract/>
                 </div>
             </div>
         );

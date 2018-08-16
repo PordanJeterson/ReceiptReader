@@ -11,6 +11,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 // making this a function allows us to access environment variables
 // see https://webpack.js.org/guides/environment-variables/
+// todo change tesseract to follow NODE_ENV when prod or it won't work
 export default (environment) => {
 
     let env = 'development';
@@ -66,7 +67,9 @@ export default (environment) => {
             }),
             new CheckerPlugin(),
             new CopyWebpackPlugin([
-                {from: path.join(__dirname, 'src', 'public', 'static')}
+                {from: path.join(__dirname, 'src', 'public', 'static')},
+                {from: path.join(__dirname, 'node_modules', 'tesseract.js', 'dist', 'worker.js'),
+                to: path.join(__dirname, 'dist', 'public', 'dist', 'worker.dev.js')}
             ]),
             new HtmlWebpackPlugin({
                 template: "src/public/static/index.html",

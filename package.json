@@ -28,7 +28,8 @@
     "react-hot-loader": "^4.3.4",
     "react-router": "^4.3.1 ",
     "react-router-dom": "^4.3.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "tesseract.js": "^1.0.10"
   },
   "devDependencies": {
     "@types/dotenv": "^4.0.3",
@@ -38,6 +39,7 @@
     "@types/react": "^16.4.11",
     "@types/react-dom": "^16.0.7",
     "@types/react-router-dom": "^4.3.0",
+    "@types/tesseract.js": "0.0.2",
     "@types/webpack-env": "^1.13.6",
     "awesome-typescript-loader": "^5.2.0",
     "babel-loader": "^7.1.5",
@@ -46,8 +48,8 @@
     "browser-sync": "^2.24.6",
     "browser-sync-webpack-plugin": "^2.2.2",
     "clean-webpack-plugin": "^0.1.19",
-    "copy-webpack-plugin": "^4.5.2",
     "concurrently": "^3.6.1",
+    "copy-webpack-plugin": "^4.5.2",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.9.3",
     "nodemon": "^1.18.3",
