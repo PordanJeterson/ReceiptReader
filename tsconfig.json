@@ -8,7 +8,7 @@
     "noImplicitAny": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "./dist",
     "skipDefaultLibCheck": true,
     "alwaysStrict": true,
     "lib": [
@@ -28,5 +28,6 @@
       ]
     }
   },
-  "exclude": ["*.tsx"]
+  // everything in src/public is handled by webpack not tsc directly
+  "exclude": ["./src/public"]
 }

@@ -18,7 +18,7 @@ class Home extends Component<HomeProps, {}> {
                     Test
                 </AppBar>
                 <div className={classes.root}>
-                    test
+                    testing
                 </div>
             </div>
         );

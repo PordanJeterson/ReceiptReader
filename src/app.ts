@@ -1,6 +1,9 @@
+// a lot of inspiration for setup taken from https://github.com/Microsoft/TypeScript-Node-Starter#typescript-node-starter
+
 import * as express from "express";
 import { Express } from "express";
 import * as path from "path";
+
 
 class App {
     public express: Express;
@@ -11,16 +14,9 @@ class App {
     }
 
     private mountRoutes(): void {
-        const router = express.Router();
-/*        router.get("/", (req, res) => {
-            res.json({
-                message: "Hello World!"
-            });
-        });*/
         this.express.use(
             express.static(path.join(__dirname, "public"), { maxAge: 31557600000 })
         );
-
     }
 }
 

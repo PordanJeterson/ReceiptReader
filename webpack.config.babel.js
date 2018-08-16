@@ -6,6 +6,7 @@ import webpack from "webpack";
 import {CheckerPlugin} from "awesome-typescript-loader";
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 // making this a function allows us to access environment variables
@@ -17,7 +18,7 @@ export default (environment) => {
         env = environment.NODE_ENV;
     }
 
-    const toMinimize = env === 'production';
+    const toMinimize = env.toString() === 'production';
 
     return {
         devtool: 'source-map',
@@ -51,6 +52,10 @@ export default (environment) => {
             ]
         },
         plugins: [
+            new BrowserSyncPlugin({
+                host: 'localhost',
+                server: {baseDir: ['dist/public']}
+            }),
             new CleanWebpackPlugin([
                 path.join(__dirname, 'dist/public')
             ]),
@@ -74,10 +79,6 @@ export default (environment) => {
                 'src/public/js'
             ],
             extensions: ['.ts', '.tsx', '.js', '.json']
-        },
-        externals: {
-            "react": "react",
-            "react-dom": "reactDOM"
         },
         optimization: {
             minimize: toMinimize
