@@ -1,12 +1,11 @@
 import * as React from "react";
 import { Component } from "react";
-import { withStyles, AppBar } from "@material-ui/core";
+import { withStyles, WithStyles } from "@material-ui/core";
 
-import { Tesseract } from './Tesseract';
 import homeStyle from "./HomeStyle";
+import { NavBar } from '../NavBar';
 
-interface HomeProps {
-    classes: any;
+interface HomeProps extends WithStyles<typeof homeStyle> {
 }
 
 class Home extends Component<HomeProps, {}> {
@@ -15,12 +14,9 @@ class Home extends Component<HomeProps, {}> {
         const {classes} = this.props;
         return (
             <div>
-                <AppBar>
-                    Test
-                </AppBar>
-                <div className={classes.root}>
-                    Tesseract!
-                    <Tesseract/>
+                <NavBar/>
+                <div className={classes.appBar}>
+                    This is where the form goes
                 </div>
             </div>
         );

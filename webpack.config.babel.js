@@ -34,7 +34,7 @@ export default (environment) => {
         module: {
             rules: [
                 {
-                    test: /\.tsx?$/,
+                    test: /\.tsx?$|\.ts?$/,
                     loaders: ['awesome-typescript-loader'],
                     include: path.join(__dirname, 'src/public/js'),
                     exclude: /node_modules/
@@ -67,9 +67,7 @@ export default (environment) => {
             }),
             new CheckerPlugin(),
             new CopyWebpackPlugin([
-                {from: path.join(__dirname, 'src', 'public', 'static')},
-                {from: path.join(__dirname, 'node_modules', 'tesseract.js', 'dist', 'worker.js'),
-                to: path.join(__dirname, 'dist', 'public', 'dist', 'worker.dev.js')}
+                {from: path.join(__dirname, 'src', 'public', 'static')}
             ]),
             new HtmlWebpackPlugin({
                 template: "src/public/static/index.html",
