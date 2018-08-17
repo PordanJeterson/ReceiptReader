@@ -4,5 +4,6 @@ export enum LeadType {
     home = 'home',
     health = 'health',
     auto = 'auto',
-    life = 'life'
+    life = 'life',
+    none = ''
 }

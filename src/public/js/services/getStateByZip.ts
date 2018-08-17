@@ -1,5 +1,8 @@
-const getStateByZip = async (zipCode: string) => {
-    return fetch(`${window.location.origin}/api`)
+const getStateByZip = (zipCode: string) => {
+    // todo get the endpoint into a const
+    const endpoint = `${window.location.origin}/api/state/${zipCode}`;
+    console.log(endpoint);
+    return fetch(endpoint)
         .then(
             (response) => (response.json())
         )

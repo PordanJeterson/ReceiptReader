@@ -1,8 +1,9 @@
 import { LeadType } from "../enums/LeadType";
 
-export interface NewLead {
+export interface NewLeadInterface {
     zipCode: string;
     firstName: string;
     lastName: string;
-    leadType: LeadType
+    leadType: LeadType;
+    state: string;
 }

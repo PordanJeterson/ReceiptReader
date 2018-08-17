@@ -1,22 +1,26 @@
-import { NewLead } from "../interfaces/NewLead";
+import { NewLeadInterface } from "../interfaces/NewLead";
+import { LeadType } from "../enums/LeadType";
 
 const validate = {
-        zipCode: function (zipCode: string) {
+        zipCode: (zipCode: string) => {
             return "string" == typeof zipCode && (/^\d{5}$/.test(zipCode) || 0 === zipCode.length);
         },
-        firstName: function (firstName: string) {
+        firstName: (firstName: string) => {
             return "string" == typeof firstName && firstName.length > 1;
         },
-        lastName: function (lastName: string) {
+        lastName: (lastName: string) => {
             return "string" == typeof lastName && lastName.length > 1;
         },
-        state: function (state: string) {
+        state: (state: string) => {
             return "string" == typeof state && 2 === state.length || "string" == typeof state && 0 === state.length;
+        },
+        leadType: (leadType: LeadType) => {
+            return leadType !== LeadType.none;
         }
     }
 ;
 
 
-export const validateForm = (lead:NewLead) => {
+export const validateForm = (lead: NewLeadInterface) => {
 
 };

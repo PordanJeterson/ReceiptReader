@@ -4,15 +4,28 @@ import { Button, withStyles, WithStyles } from "@material-ui/core";
 
 import { getStateByZip } from "../../services";
 import newLeadStyle from "./NewLeadStyle";
+import { NewLeadInterface } from "../../interfaces/NewLead";
+import { LeadType } from "../../enums/LeadType";
 
 interface HomeProps extends WithStyles<typeof newLeadStyle> {
 }
 
+const initialState: NewLeadInterface = {
+    zipCode: "",
+    firstName: "",
+    lastName: "",
+    leadType: LeadType.none,
+    state: ""
+};
+type State = Readonly<typeof initialState>;
+
 class NewLead extends Component<HomeProps, {}> {
 
+    state: State = initialState;
+
     private testApi(event: MouseEvent<HTMLElement>) {
-        console.log('time to test API');
-        getStateByZip('66223').then((response) => {
+        const zipCode = '66223';
+        getStateByZip(zipCode).then((response) => {
             console.log(response);
         });
     }
@@ -21,7 +34,10 @@ class NewLead extends Component<HomeProps, {}> {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <Button onClick={this.testApi}>Test api</Button>
+                <form>
+
+                    <Button onClick={this.testApi}>Test api</Button>
+                </form>
             </div>
         );
     }
