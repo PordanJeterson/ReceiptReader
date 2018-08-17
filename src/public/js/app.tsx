@@ -5,12 +5,13 @@ import { BrowserRouter } from "react-router-dom";
 import { Routes } from "./routes";
 
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { cyan, blueGrey } from "@material-ui/core/colors";
+import { cyan, blueGrey, red} from "@material-ui/core/colors";
 
 const theme = createMuiTheme({
     palette: {
         primary: cyan,
-        secondary: blueGrey
+        secondary: blueGrey,
+        error: red
     }
 });
 

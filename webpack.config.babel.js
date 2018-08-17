@@ -55,7 +55,8 @@ export default (environment) => {
         plugins: [
             new BrowserSyncPlugin({
                 host: 'localhost',
-                server: {baseDir: ['dist/public']}
+                proxy: "localhost:8080"
+                //server: {baseDir: ['dist/public']}
             }),
             new CleanWebpackPlugin([
                 path.join(__dirname, 'dist/public')
