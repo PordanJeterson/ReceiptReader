@@ -22,4 +22,4 @@ const server = app.listen(process.env.PORT || 3000, () => {
     console.log("  Press CTRL-C to stop\n");
 });
 
-export default server;
+export { server };

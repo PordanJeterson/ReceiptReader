@@ -20,5 +20,4 @@ class App {
     }
 }
 
-export default new App().express;
 export const app = new App().express;

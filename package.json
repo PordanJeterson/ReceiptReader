@@ -8,7 +8,7 @@
     "build-ts-server": "tsc",
     "debug": "npm run build && npm run watch-debug",
     "dev": "npm run watch",
-    "nodemon": "nodemon dist/server.js",
+    "nodemon": "nodemon ./dist/server.js",
     "serve-debug": "nodemon --inspect dist/server/server.js",
     "tslint": "tslint --fix -c tslint.json -p tsconfig.json",
     "watch": "concurrently -k -p \"[{name}]\" -n \"Webpack,Typescript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-webpack\" \"npm run watch-ts\" \"npm run nodemon\"",

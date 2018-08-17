@@ -4,10 +4,20 @@ import { createStyles } from "@material-ui/core";
 const navBarStyle = (theme: Theme) => createStyles(
     {
         root: {
-            "paddingTop": "20px",
+            alignItems: "center",
+            display: "flex",
+            height: "30px",
+            [theme.breakpoints.down('sm')]: {
+                justifyContent: "center",
+
+            },
+            [theme.breakpoints.up('md')]: {
+                paddingLeft: "65px"
+            }
         },
-        appBar: {
-            "height": "3em"
+        button: {
+            backgroundColor: theme.palette.primary.light,
+            margin: theme.spacing.unit
         }
     });
 
