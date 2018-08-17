@@ -61,5 +61,6 @@
     "webpack-cli": "^3.1.0"
   },
   "author": "Alec Hansen",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "proxy": "http://localhost:8080"
 }

@@ -1,4 +1,4 @@
-const getStateByZip = (zipCode:string) => {
+const getStateByZip = async (zipCode:string) => {
 
 };
 

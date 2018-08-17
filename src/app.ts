@@ -2,6 +2,7 @@
 
 import * as express from "express";
 import { Express } from "express";
+import { apiController } from './controllers';
 import * as path from "path";
 
 
@@ -14,8 +15,9 @@ class App {
     }
 
     private mountRoutes(): void {
+        this.express.get("/api", apiController);
         this.express.use(
-            express.static(path.join(__dirname, "public"), { maxAge: 31557600000 })
+            express.static(path.join(__dirname, "public"), {maxAge: 31557600000})
         );
     }
 }
