@@ -33,36 +33,38 @@ class NewLead extends Component<HomeProps, {}> {
 
     readonly state: State = initialState;
 
-    private getUsState(event: MouseEvent<HTMLElement>) {
+    private getUsState = (event: MouseEvent<HTMLElement>) => {
         const zipCode = '66223';
         getStateByZip(zipCode).then((response) => {
             console.log(response);
         });
-    }
+    };
 
-    private handleChange = (name: string) => (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        this.setState(() => ({[name]: event.target.value}));
+    private handleChange = (name: string) => (event: ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value;
+        this.setState(() => ({[name]: value}));
     };
 
     public render(): JSX.Element {
         const {classes} = this.props;
         const formElements = Object.keys(this.state).map((key) => {
-            return (<TextField
-                key={key}
-                id={key}
-                name={key}
-                label={prettyNames[key]}
-                value={this.state[key]}
-                onChange={this.handleChange(key)}
-            />);
+            return (
+                <div key={key}>
+                    <TextField
+                        id={key}
+                        name={key}
+                        label={prettyNames[key]}
+                        value={this.state[key]}
+                        onChange={this.handleChange(key)}
+                    />
+                </div>
+            );
         });
-
-        console.log(formElements);
 
         return (
             <div className={classes.root}>
                 <form>
-
+                    {formElements}
                     <div>what the hay</div>
                     <Button onClick={this.getUsState}>Test api</Button>
                 </form>
