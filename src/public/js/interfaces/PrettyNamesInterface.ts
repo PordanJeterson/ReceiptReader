@@ -1,11 +1,11 @@
-import { LeadType } from "../enums/LeadType";
-
-export interface NewLeadInterface {
+interface PrettyNamesInterface {
     [key: string]: string;
 
     zipCode: string;
     firstName: string;
     lastName: string;
-    leadType: LeadType;
+    leadType: string;
     state: string;
 }
+
+export { PrettyNamesInterface };

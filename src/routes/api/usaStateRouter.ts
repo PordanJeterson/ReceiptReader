@@ -1,9 +1,9 @@
-import * as express from 'express';
+import * as express from "express";
 import { getStateByZipCode } from "../../services";
 
 const usaStateRouter = express.Router();
 
-usaStateRouter.get('/:zipCode', (req, res) => {
+usaStateRouter.get("/:zipCode", (req, res) => {
     // todo hit api to get the zip code
     getStateByZipCode(req.params.zipCode)
         .then((response) => {
