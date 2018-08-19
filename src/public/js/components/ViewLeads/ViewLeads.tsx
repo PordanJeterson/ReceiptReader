@@ -15,6 +15,7 @@ class ViewLeads extends Component<HomeProps, {}> {
             <div className={classes.root}>
                 <div>
                     View Leads
+                    test
                 </div>
             </div>
         );

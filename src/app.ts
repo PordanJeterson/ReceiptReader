@@ -7,19 +7,23 @@ import * as path from "path";
 
 
 class App {
-    public express: Express;
+    public app: Express;
 
     constructor() {
-        this.express = express();
+        this.app = express();
         this.mountRoutes();
     }
 
     private mountRoutes(): void {
-        this.express.use("/api", apiRouter);
-        this.express.use(
+        this.app.use("/api", apiRouter);
+        this.app.use(
             express.static(path.join(__dirname, "public"), {maxAge: 31557600000})
         );
+        // allows us to use react's router
+        this.app.get('*', function (request, response){
+            response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+        })
     }
 }
 
-export const app = new App().express;
+export const app = new App().app;
