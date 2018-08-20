@@ -66,3 +66,10 @@ then
 
 ```npm run dev```
 
+For production, use
+```
+npm install
+npm run build
+npm start
+```
+
