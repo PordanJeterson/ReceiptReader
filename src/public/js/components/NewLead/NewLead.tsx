@@ -5,9 +5,9 @@ import { MenuItem, TextField, withStyles, WithStyles, Snackbar, Button, IconButt
 
 import { getStateByZip, validateForm, validateField } from "../../services";
 import newLeadStyle from "./NewLeadStyle";
-import { PrettyNamesInterface, NewLeadErrorInterface, NewLeadInterface } from "../../interfaces";
+import { NewLeadErrorInterface, NewLeadInterface } from "../../interfaces";
 import { LeadType } from "../../enums/LeadType";
-import { usStates } from "../../constants";
+import { usStates, prettyNames } from "../../constants";
 import { submitLead } from "../../services/submitLead";
 
 interface NewLeadProps extends WithStyles<typeof newLeadStyle> {
@@ -66,13 +66,6 @@ const initialState: initialStateInterface = {
     }
 };
 
-const prettyNames: PrettyNamesInterface = {
-    zipCode: "Zip Code",
-    firstName: "First Name",
-    lastName: "Last Name",
-    leadType: "Lead Type",
-    state: "State"
-};
 
 type State = Readonly<typeof initialState>;
 

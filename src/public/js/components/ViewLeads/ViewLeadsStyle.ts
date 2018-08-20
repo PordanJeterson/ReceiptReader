@@ -4,7 +4,15 @@ import { SharedStyle } from "../SharedStyle";
 
 const viewLeadsStyle = (theme: Theme) => createStyles(
     {
-        ...SharedStyle
+        ...SharedStyle,
+        card: {
+            [theme.breakpoints.down('sm')]: {
+                width: '95%'
+            },
+            [theme.breakpoints.up('sm')]: {
+                width: '600px'
+            },
+        }
     });
 
 export default viewLeadsStyle;
