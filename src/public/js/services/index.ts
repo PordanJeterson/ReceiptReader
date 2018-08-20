@@ -1,4 +1,4 @@
 import { getStateByZip } from "./getStateByZip";
-import { validateForm } from "./validation";
+import { validateField, validateForm } from "./validation";
 
-export { getStateByZip, validateForm };
+export { getStateByZip, validateForm, validateField };

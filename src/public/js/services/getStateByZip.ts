@@ -1,3 +1,7 @@
+interface getStateByZip {
+    (zipCode: string): { message: string, error: any } | { state: string }
+}
+
 const getStateByZip = (zipCode: string) => {
     // todo get the endpoint into a const
     const endpoint = `${window.location.origin}/api/state/${zipCode}`;
