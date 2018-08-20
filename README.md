@@ -5,7 +5,7 @@ it much easier to work with data, hammering down types being passed between diff
 feature makes writing in TypeScript and debugging your code easy. Modern ES features are also present, including 
 Async/Await. 
 
-##Highlights
+## Highlights
 
 #### Submit Leads
 Leads can be submitted on the "New Leads" page and are stored on the server, but  the application was coded with being 
@@ -31,7 +31,7 @@ to only trust it as far as you have to.
 #### 
 The form clears after receiving a successful submission reply from the server.
 
-###API
+### API
 
 #### Advertising API
 ```/api/ads``` GET with JSON body like ```{"zipCode": "41018","type": "health"}```
