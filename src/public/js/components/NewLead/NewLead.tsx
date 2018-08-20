@@ -156,15 +156,22 @@ class NewLead extends Component<NewLeadProps, {}> {
         });
     };
 
-    private handleSubmit = async (event: FormEvent) => {
+    private handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formIsValid = this.formValidation();
         this.setAllDirty();
         if (formIsValid) {
             console.log("form is valid!");
-            const response = await submitLead(this.state.newLead);
-            const {message} = response;
-            this.displaySnackBarMessage(message);
+            console.log(event.target);
+            const lead = this.state.newLead;
+            const response = await submitLead(lead);
+            if (response.hasOwnProperty("error")) {
+                this.displaySnackBarMessage(response.error);
+            } else {
+                this.setState(() => ({...initialState}));
+                this.displaySnackBarMessage(response.message);
+            }
+
         }
     };
 

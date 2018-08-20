@@ -15,9 +15,8 @@ const validateField: ValidateFieldInterface = {
         state: (state: string) => {
             return "string" == typeof state && 2 === state.length;
         },
-        leadType: (leadType: LeadType) => {
-            return leadType !== LeadType.none;
-        }
+        leadType: (leadType: LeadType) => (
+            leadType !== LeadType.none && Object.keys(LeadType).includes(leadType))
     }
 ;
 
@@ -60,7 +59,6 @@ validateForm = (lead: NewLeadInterface) => {
         if (value === "dirty") {
             return false;
         }
-        console.log(`${value} has a value of ${validation[value].isInvalid}`);
         return validation[value].isInvalid;
     });
     return validation;
