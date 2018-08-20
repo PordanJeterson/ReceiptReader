@@ -22,9 +22,7 @@ interface initialStateInterface {
     }
 }
 
-const formData = new FormData();
 const initialLead: NewLeadInterface = {
-    ...formData,
     firstName: "",
     lastName: "",
     leadType: LeadType.none,
@@ -104,11 +102,6 @@ class NewLead extends Component<NewLeadProps, {}> {
         }
         const formValidation = validateForm(lead);
         this.handleErrors(formValidation);
-        if (formValidation.dirty.isInvalid) {
-            console.log("Form is invalid!");
-        } else {
-            console.log("Form is valid!");
-        }
         return !formValidation.dirty.isInvalid;
     };
 
@@ -170,11 +163,14 @@ class NewLead extends Component<NewLeadProps, {}> {
         if (formIsValid) {
             console.log("form is valid!");
             const response = await submitLead(this.state.newLead);
-            this.displaySnackBarMessage(response);
+            const {message} = response;
+            this.displaySnackBarMessage(message);
         }
     };
 
     private displaySnackBarMessage = (message: string) => {
+
+
         this.setState(() => ({
             snackBar: {
                 open: true,
@@ -229,6 +225,7 @@ class NewLead extends Component<NewLeadProps, {}> {
                 <form onSubmit={this.handleSubmit}>
                     <div className={classes.formInput}>
                         <TextField
+                            type="text"
                             onBlur={this.handleBlur('leadType')}
                             fullWidth={true}
                             id="leadType"
@@ -254,6 +251,7 @@ class NewLead extends Component<NewLeadProps, {}> {
                     </div>
                     <div className={classes.formInput}>
                         <TextField
+                            type="text"
                             onBlur={this.handleBlur('firstName')}
                             fullWidth={true}
                             id="firstName"
@@ -266,6 +264,7 @@ class NewLead extends Component<NewLeadProps, {}> {
                     </div>
                     <div className={classes.formInput}>
                         <TextField
+                            type="text"
                             onBlur={this.handleBlur("lastName")}
                             fullWidth={true}
                             id="lastName"
@@ -278,6 +277,7 @@ class NewLead extends Component<NewLeadProps, {}> {
                     </div>
                     <div className={classes.formInput}>
                         <TextField
+                            type="text"
                             onBlur={this.handleBlur("zipCode")}
                             fullWidth={true}
                             id="zipCode"
@@ -309,7 +309,7 @@ class NewLead extends Component<NewLeadProps, {}> {
                             ))}
                         </TextField>
                     </div>
-                    <button type="submit">Submit Form</button>
+                    <Button className={classes.submitButton} color='primary' type="submit">Submit Form</Button>
                 </form>
                 <Snackbar
                     anchorOrigin={{

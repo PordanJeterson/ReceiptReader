@@ -14,6 +14,10 @@ const newLeadStyle = (theme: Theme) => createStyles(
             },
             paddingTop: '20px',
 
+        },
+        submitButton: {
+            backgroundColor: theme.palette.primary.contrastText,
+            marginTop: '20px'
         }
     });
 

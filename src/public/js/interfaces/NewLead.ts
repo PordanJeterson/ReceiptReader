@@ -1,6 +1,6 @@
 import { LeadType } from "../enums/LeadType";
 
-export interface NewLeadInterface extends FormData {
+export interface NewLeadInterface {
     [key: string]: any;
 
     zipCode: string;
