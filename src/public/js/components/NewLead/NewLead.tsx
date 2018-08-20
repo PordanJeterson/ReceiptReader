@@ -7,8 +7,6 @@ import newLeadStyle from "./NewLeadStyle";
 import { PrettyNamesInterface, NewLeadErrorInterface, NewLeadInterface } from "../../interfaces";
 import { LeadType } from "../../enums/LeadType";
 import { usStates } from "../../constants";
-import { Simulate } from "react-dom/test-utils";
-import error = Simulate.error;
 
 interface NewLeadProps extends WithStyles<typeof newLeadStyle> {
 }
