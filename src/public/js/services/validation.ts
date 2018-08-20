@@ -57,6 +57,10 @@ validateForm = (lead: NewLeadInterface) => {
     }, accumulator);
     // if one is valid the form is invalid
     validation.dirty.isInvalid = Object.keys(validation).some((value) => {
+        if (value === "dirty") {
+            return false;
+        }
+        console.log(`${value} has a value of ${validation[value].isInvalid}`);
         return validation[value].isInvalid;
     });
     return validation;

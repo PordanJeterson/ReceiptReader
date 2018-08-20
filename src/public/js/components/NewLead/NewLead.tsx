@@ -1,6 +1,7 @@
 import * as React from "react";
-import { ChangeEvent, Component, FormEvent } from "react";
-import { MenuItem, TextField, withStyles, WithStyles } from "@material-ui/core";
+import { ChangeEvent, Component, FormEvent, ReactElement, MouseEvent } from "react";
+import { Close } from '@material-ui/icons';
+import { MenuItem, TextField, withStyles, WithStyles, Snackbar, Button, IconButton } from "@material-ui/core";
 
 import { getStateByZip, validateForm, validateField } from "../../services";
 import newLeadStyle from "./NewLeadStyle";
@@ -15,6 +16,10 @@ interface NewLeadProps extends WithStyles<typeof newLeadStyle> {
 interface initialStateInterface {
     error: NewLeadErrorInterface;
     newLead: NewLeadInterface;
+    snackBar: {
+        open: boolean,
+        message: ReactElement<any>
+    }
 }
 
 const formData = new FormData();
@@ -56,7 +61,11 @@ const initialState: initialStateInterface = {
             isInvalid: false
         }
     },
-    newLead: initialLead
+    newLead: initialLead,
+    snackBar: {
+        open: false,
+        message: <span>No Content</span>,
+    }
 };
 
 const prettyNames: PrettyNamesInterface = {
@@ -95,6 +104,11 @@ class NewLead extends Component<NewLeadProps, {}> {
         }
         const formValidation = validateForm(lead);
         this.handleErrors(formValidation);
+        if (formValidation.dirty.isInvalid) {
+            console.log("Form is invalid!");
+        } else {
+            console.log("Form is valid!");
+        }
         return !formValidation.dirty.isInvalid;
     };
 
@@ -153,10 +167,32 @@ class NewLead extends Component<NewLeadProps, {}> {
         event.preventDefault();
         const formIsValid = this.formValidation();
         this.setAllDirty();
-
         if (formIsValid) {
-            submitLead(this.state.newLead);
+            console.log("form is valid!");
+            const response = await submitLead(this.state.newLead);
+            this.displaySnackBarMessage(response);
         }
+    };
+
+    private displaySnackBarMessage = (message: string) => {
+        this.setState(() => ({
+            snackBar: {
+                open: true,
+                message:
+                    <span id="message-id">
+                        {message}
+                    </span>
+            }
+        }));
+    };
+
+    private handleClose = (event: MouseEvent<HTMLElement>) => {
+        this.setState(() => ({
+            snackBar: {
+                open: false,
+                message: ''
+            }
+        }));
     };
 
     private handleErrors = (formValidation: NewLeadErrorInterface) => {
@@ -275,6 +311,26 @@ class NewLead extends Component<NewLeadProps, {}> {
                     </div>
                     <button type="submit">Submit Form</button>
                 </form>
+                <Snackbar
+                    anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "left"
+                    }}
+                    autoHideDuration={6000}
+                    open={this.state.snackBar.open}
+                    message={this.state.snackBar.message}
+                    onClose={this.handleClose}
+                    action={[
+                        <IconButton
+                            key="close"
+                            aria-label="Close"
+                            color="inherit"
+                            onClick={this.handleClose}
+                        >
+                            <Close/>
+                        </IconButton>,
+                    ]}
+                />
             </div>
         );
     }
