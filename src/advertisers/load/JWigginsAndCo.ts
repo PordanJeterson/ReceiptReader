@@ -3,7 +3,7 @@ import { AdResponse, Advertiser } from "../../interfaces";
 class JWigginsAndCo extends Advertiser {
 
     constructor() {
-        super()
+        super();
     }
 
 

@@ -1,16 +1,30 @@
 import * as express from "express";
-import * as bodyParser from "body-parser";
-import {advertisersAutoLoader} from "../../advertisers";
+import { advertisersAutoLoader } from "../../advertisers";
+import { zipCode, leadType } from "../../services/serverValidation";
 
 const adsRouter = express.Router();
 
 adsRouter.get("/", (req, res) => {
     // params are zipCode and type
-    req.params;
+    if (req.body.hasOwnProperty("zipCode") && req.body.hasOwnProperty("type")) {
+        console.log("got past the first check");
+        const zip = req.body.zipCode;
+        const type = req.body.type;
+        if (zipCode(zip) && leadType(type)) {
+            console.log(`${zip} is ZIP code`);
+            advertisersAutoLoader.getAds(type, zip)
+                .then((ads) => {
+                    res.json({ads});
+                });
+        } else {
+            res.status(400);
+            res.json({message: "Parameters exist but were malformed"});
+        }
+    } else {
+        res.status(400);
+        res.json({message: "parameters zipCode and type are required via a JSON request"});
+    }
 
-    // todo make this return a list of ads sorted based on bid
-    // todo make this able to easily add more sources of data, decoupled from shape
-    res.json({message: "send ads"});
 });
 
 export { adsRouter };

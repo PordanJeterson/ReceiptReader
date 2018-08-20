@@ -3,13 +3,13 @@ import { resolve } from "path";
 import { AdResponse, Advertiser } from "../interfaces";
 import settle from "../services/promiseSettle";
 
-interface settleInterface extends Promise<any> {
+interface SettleInterface extends Promise<any> {
     settle: Function;
 }
 
 // doing some crazy stuff with adding onto Promises here, typescript does NOT like this
 // @ts-ignore
-const promise: settleInterface = Promise;
+const promise: SettleInterface = Promise;
 // @ts-ignore
 promise.settle = settle;
 
@@ -35,7 +35,6 @@ class AdvertisersAutoLoader {
             return provider.getAds(zipCode, type);
         });
         const ads = await this.resolvePromises(adsArray);
-        console.log(ads);
         return this.sortByBid(ads);
     };
 
@@ -56,14 +55,15 @@ class AdvertisersAutoLoader {
     };
 
     private sortByBid = (ads: AdResponse[]): AdResponse[] => {
-        return ads.sort((a, b) => {
-            if (a.bid < b.bid) {
+        const prices = ads.sort((a, b) => {
+            if (a.bid > b.bid) {
                 return -1;
-            } else if (a.bid > b.bid) {
+            } else if (a.bid < b.bid) {
                 return 1;
             }
             return 0;
         });
+        return prices;
     };
 }
 

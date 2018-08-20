@@ -1,9 +1,9 @@
-import {values} from "node-persist";
+import { values } from "node-persist";
 import { LeadInterface } from "../interfaces";
 
 const getLeads = (): LeadInterface[] => {
     // @ts-ignore
-    return values()
+    return values();
 };
 
-export {getLeads}
+export {getLeads};

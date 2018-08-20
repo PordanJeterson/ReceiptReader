@@ -1,6 +1,6 @@
 interface Ad {
-    description: string,
-    title: string
+    description: string;
+    title: string;
 }
 
 interface AdResponse {
@@ -16,7 +16,7 @@ interface AdResponse {
 // ensures each one has the same return types so the loader will work
 abstract class Advertiser {
 
-    abstract async getAds(zipCode: string, insuranceType: string): Promise<AdResponse[]>
+    abstract async getAds(zipCode: string, insuranceType: string): Promise<AdResponse[]>;
 
     protected filterAdsByZipAndType = (zipCode: string, insuranceType: string, ads: AdResponse[]) => {
         const filteredByZip = this.filterByZip(zipCode, ads);

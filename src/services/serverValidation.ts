@@ -3,10 +3,10 @@
 import { LeadInterface } from "../interfaces";
 
 enum LeadType {
-    auto = 'auto',
-    health = 'health',
-    home = 'home',
-    life = 'life',
+    auto = "auto",
+    health = "health",
+    home = "home",
+    life = "life",
 }
 
 const zipCode = (zipCode: string) => ("string" == typeof zipCode && (/^\d{5}$/.test(zipCode)));
@@ -24,4 +24,4 @@ const validate = (lead: LeadInterface) => {
         ;
 };
 
-export { validate };
+export { zipCode, leadType, validate };

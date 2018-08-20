@@ -3,7 +3,7 @@ import { AdResponse, Advertiser } from "../../interfaces";
 class SlurmColaCompany extends Advertiser {
 
     constructor() {
-        super()
+        super();
     }
 
     ads: AdResponse = {
