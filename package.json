@@ -1,7 +1,7 @@
 {
-  "name": "receiptreader",
+  "name": "adleadgenerator",
   "version": "1.0.0",
-  "description": "Ingests receipts, itemizes them, and generates a weekly expense report",
+  "description": "Accepts new leads and has an API for ad bidding",
   "scripts": {
     "start": "node dist/server.js",
     "build": "npm run build-ts-server && npm run tslint && npm run webpack-prod",
