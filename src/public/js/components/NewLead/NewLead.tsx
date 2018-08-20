@@ -7,6 +7,7 @@ import newLeadStyle from "./NewLeadStyle";
 import { PrettyNamesInterface, NewLeadErrorInterface, NewLeadInterface } from "../../interfaces";
 import { LeadType } from "../../enums/LeadType";
 import { usStates } from "../../constants";
+import { submitLead } from "../../services/submitLead";
 
 interface NewLeadProps extends WithStyles<typeof newLeadStyle> {
 }
@@ -118,24 +119,23 @@ class NewLead extends Component<NewLeadProps, {}> {
 
     private handleZipCodeChange = (event: ChangeEvent<HTMLInputElement>) => {
         const zipCode = event.target.value;
-        if (validateField.zipCode(zipCode)) {
-            getStateByZip(zipCode).then(
-                (state) => {
-                    // in this case it's a value add and not essential, so we don't throw an error when server
-                    // has an error and is not able to get us the state
-                    if (state.hasOwnProperty("state")) {
-                        this.setState((prevState) => ({
-                            newLead: {
-                                // @ts-ignore
-                                ...prevState.newLead,
-                                ...state
-                            }
-                        }));
-                    }
-                }
-            );
-        }
+        this.changeStateFromZip(zipCode);
         this.handleChange('zipCode')(event);
+    };
+
+    private changeStateFromZip = async (zipCode: string) => {
+        if (validateField.zipCode(zipCode)) {
+            const state = await getStateByZip(zipCode);
+            if (state.hasOwnProperty("state")) {
+                this.setState((prevState) => ({
+                    newLead: {
+                        // @ts-ignore
+                        ...prevState.newLead,
+                        ...state
+                    }
+                }));
+            }
+        }
     };
 
     private getAllFormNames = () => {
@@ -149,13 +149,13 @@ class NewLead extends Component<NewLeadProps, {}> {
         });
     };
 
-    private handleSubmit = (event: FormEvent) => {
+    private handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
         const formIsValid = this.formValidation();
         this.setAllDirty();
 
         if (formIsValid) {
-
+            submitLead(this.state.newLead);
         }
     };
 
