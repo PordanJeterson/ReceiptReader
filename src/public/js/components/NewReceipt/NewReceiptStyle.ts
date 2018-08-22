@@ -2,7 +2,7 @@ import { Theme } from "@material-ui/core";
 import { createStyles } from "@material-ui/core";
 import { SharedStyle } from "../SharedStyle";
 
-const newLeadStyle = (theme: Theme) => createStyles(
+const newReceiptStyle = (theme: Theme) => createStyles(
     {
         ...SharedStyle,
         formInput: {
@@ -21,4 +21,4 @@ const newLeadStyle = (theme: Theme) => createStyles(
         }
     });
 
-export default newLeadStyle;
+export default newReceiptStyle;

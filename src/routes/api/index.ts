@@ -1,13 +1,11 @@
 import { Router } from "express";
-import { leadRouter } from "./lead";
-import { adsRouter } from "./ads";
-import { usaStateRouter } from "./usaStateRouter";
+import { reportRouter } from "./report";
+import { receiptRouter } from "./receiptRouter";
 
 const apiRouter = Router();
 
-apiRouter.use("/lead", leadRouter);
-apiRouter.use("/ads", adsRouter);
-apiRouter.use("/state", usaStateRouter);
+apiRouter.use("/report", reportRouter);
+apiRouter.use("/receipt", receiptRouter);
 apiRouter.use("/", (req, res) => {
     res.json({error: "You have entered an invalid endpoint"});
 });

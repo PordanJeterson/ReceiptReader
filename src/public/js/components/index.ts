@@ -1,6 +1,6 @@
 import { HomePage } from './HomePage';
 import { NavBar } from './NavBar';
-import { NewLead } from './NewLead';
-import { ViewLeads } from './ViewLeads';
+import { NewReceipt } from './NewReceipt';
+import { ViewReceipts } from './ViewExpenseReports';
 
-export { HomePage, NavBar, NewLead, ViewLeads };
+export { HomePage, NavBar, NewReceipt, ViewReceipts };

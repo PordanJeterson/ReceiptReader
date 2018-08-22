@@ -1,6 +1,4 @@
-import { getStateByZipCode } from "./getStateByZipCode";
-import { validate } from "./serverValidation";
-import { saveLead } from "./saveLead";
-import { getLeads } from "./getLeads";
+import { saveReceipt } from "./saveReceipt";
+import { getReceipts } from "./getReceipts";
 
-export { getStateByZipCode, validate, saveLead, getLeads };
+export { saveReceipt, getReceipts };

@@ -1,13 +1,13 @@
-import { NewLeadInterface } from "../interfaces";
+import { Receipt } from "../interfaces";
 
-const submitLead = (lead: NewLeadInterface) => {
+const submitReceipt = (receipt: Receipt) => {
     // todo get the endpoint into a const
     const endpoint = `${window.location.origin}/api/lead`;
 
-    console.log(lead);
+    console.log(receipt);
     return fetch(endpoint, {
         method: "POST",
-        body: JSON.stringify(lead),
+        body: JSON.stringify(receipt),
         headers: {
             'Content-type': 'application/json'
         }
@@ -20,4 +20,4 @@ const submitLead = (lead: NewLeadInterface) => {
         });
 };
 
-export { submitLead };
+export { submitReceipt };

@@ -2,7 +2,7 @@ import { Theme } from "@material-ui/core";
 import { createStyles } from "@material-ui/core";
 import { SharedStyle } from "../SharedStyle";
 
-const viewLeadsStyle = (theme: Theme) => createStyles(
+const viewExpenseReportsStyle = (theme: Theme) => createStyles(
     {
         ...SharedStyle,
         card: {
@@ -15,4 +15,4 @@ const viewLeadsStyle = (theme: Theme) => createStyles(
         }
     });
 
-export default viewLeadsStyle;
+export default viewExpenseReportsStyle;

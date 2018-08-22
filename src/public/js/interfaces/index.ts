@@ -1,6 +1,4 @@
-import { NewLeadInterface } from "./NewLead";
-import { NewLeadErrorInterface } from "./NewLeadError";
-import { PrettyNamesInterface } from "./PrettyNamesInterface";
-import { ValidateFieldInterface } from "./ValidateField";
+import { Receipt } from './Receipt';
+import {ValidationError} from "./ValidationError";
 
-export { NewLeadInterface, NewLeadErrorInterface, PrettyNamesInterface, ValidateFieldInterface };
+export { Receipt, ValidationError };

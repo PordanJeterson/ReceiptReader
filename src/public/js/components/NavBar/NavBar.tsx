@@ -13,8 +13,8 @@ import ViewList from "@material-ui/icons/ViewList";
 interface NavBarProps extends WithStyles<typeof navBarStyle> {
 }
 
-const NewLeadLink = (props: any) => <Link to="/new" {...props}>New Lead</Link>;
-const ViewLeadsLink = (props: any) => <Link to="/leads" {...props}>View Leads</Link>;
+const AddReceiptLink = (props: any) => <Link to="/new" {...props}><NoteAdd/>Add Receipt</Link>;
+const ViewExpenseReportLink = (props: any) => <Link to="/leads" {...props}><ViewList/>Expense Report</Link>;
 
 class NavBar extends Component<NavBarProps, {}> {
 
@@ -23,10 +23,8 @@ class NavBar extends Component<NavBarProps, {}> {
         return (
             <AppBar>
                 <div className={classes.root}>
-                    <Button component={NewLeadLink} classes={{root: classes.button}} size="large"><NoteAdd/> New
-                        Lead</Button>
-                    <Button component={ViewLeadsLink} classes={{root: classes.button}} size="large"><ViewList/> View
-                        Leads</Button>
+                    <Button component={AddReceiptLink} classes={{root: classes.button}} size="large"/>
+                    <Button component={ViewExpenseReportLink} classes={{root: classes.button}} size="large"/>
                 </div>
             </AppBar>
         );

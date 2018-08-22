@@ -1,54 +1,29 @@
-import { NewLeadErrorInterface, NewLeadInterface } from "../interfaces";
-import { LeadType } from "../enums/LeadType";
-import { ValidateFieldInterface } from "../interfaces";
+import { ValidationError, Receipt } from "../interfaces";
 
-const validateField: ValidateFieldInterface = {
-        zipCode: (zipCode: string) => {
-            return "string" == typeof zipCode && (/^\d{5}$/.test(zipCode));
-        },
-        firstName: (firstName: string) => {
-            return "string" == typeof firstName && firstName.length >= 1;
-        },
-        lastName: (lastName: string) => {
-            return "string" == typeof lastName && lastName.length >= 1;
-        },
-        state: (state: string) => {
-            return "string" == typeof state && 2 === state.length;
-        },
-        leadType: (leadType: LeadType) => (
-            leadType !== LeadType.none && Object.keys(LeadType).includes(leadType))
+interface ValidateFunc {
+    (toValidate: any): boolean
+}
+
+interface ValidateField {
+    [key: string]: ValidateFunc
+}
+
+const validateField: ValidateField = {
+        receipt: (receipt: Receipt) => {return true}
     }
 ;
 
 // technically this only returns true or NewLeadErrorInterface, but can't specify that "false" can never occur
 interface validateFormFunc {
-    (lead: NewLeadInterface): NewLeadErrorInterface
+    (lead: Receipt): ValidationError
 }
 
-let accumulator: NewLeadErrorInterface = {
-    firstName: {
-        isInvalid: true,
-    },
-    lastName: {
-        isInvalid: true,
-    },
-    leadType: {
-        isInvalid: true,
-    },
-    state: {
-        isInvalid: true,
-    },
-    zipCode: {
-        isInvalid: true,
-    },
-    dirty: {
-        isInvalid: true,
-        dirty: false
-    }
+let accumulator: ValidationError = {
+    fields: []
 };
 
 let validateForm: validateFormFunc;
-validateForm = (lead: NewLeadInterface) => {
+validateForm = (lead: Receipt) => {
     const validation = Object.keys(lead).reduce((acc, value) => {
         const isValid = validateField[value](lead[value]);
         acc[value].isInvalid = !isValid;
