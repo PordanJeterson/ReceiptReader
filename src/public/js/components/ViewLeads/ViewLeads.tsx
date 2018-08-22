@@ -1,10 +1,18 @@
 import * as React from "react";
 import { Component } from "react";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Typography from "@material-ui/core/Typography";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { WithStyles } from "@material-ui/core/styles/withStyles";
+
 import { getLeads } from "../../services";
 import { prettyNames } from "../../constants";
-import { Card, CardContent, List, ListItem, ListItemText, Typography, withStyles, WithStyles } from "@material-ui/core";
-import ViewLeadsStyle from "./ViewLeadsStyle";
 import { NewLeadInterface } from "../../interfaces";
+import ViewLeadsStyle from "./ViewLeadsStyle";
 
 interface HomeProps extends WithStyles<typeof ViewLeadsStyle> {
 }

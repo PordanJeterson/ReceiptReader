@@ -1,7 +1,13 @@
 import * as React from "react";
 import { ChangeEvent, Component, FormEvent, ReactElement, MouseEvent } from "react";
-import { Close } from '@material-ui/icons';
-import { MenuItem, TextField, withStyles, WithStyles, Snackbar, Button, IconButton } from "@material-ui/core";
+import Close from "@material-ui/icons/Close";
+import MenuItem from "@material-ui/core/MenuItem";
+import TextField from "@material-ui/core/TextField";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { WithStyles } from "@material-ui/core/styles";
+import Snackbar from "@material-ui/core/Snackbar";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
 
 import { getStateByZip, validateForm, validateField } from "../../services";
 import newLeadStyle from "./NewLeadStyle";

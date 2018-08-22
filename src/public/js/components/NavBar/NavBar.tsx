@@ -1,10 +1,14 @@
 import * as React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import { withStyles, WithStyles, AppBar, Button } from "@material-ui/core";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { WithStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar/AppBar";
+import Button from "@material-ui/core/Button/Button";
 
 import navBarStyle from "./NavBarStyle";
-import { NoteAdd, ViewList } from "@material-ui/icons";
+import NoteAdd from "@material-ui/icons/NoteAdd";
+import ViewList from "@material-ui/icons/ViewList";
 
 interface NavBarProps extends WithStyles<typeof navBarStyle> {
 }

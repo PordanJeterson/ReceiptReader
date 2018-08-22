@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Component } from "react";
-import { Typography, withStyles, WithStyles } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography/Typography";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { WithStyles } from "@material-ui/core/styles";
 
 import homeStyle from "./HomeStyle";
 
