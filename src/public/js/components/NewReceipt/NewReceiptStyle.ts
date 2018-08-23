@@ -18,7 +18,11 @@ const newReceiptStyle = (theme: Theme) => createStyles(
         submitButton: {
             backgroundColor: theme.palette.primary.contrastText,
             marginTop: '20px'
-        }
+        },
+        progress: {
+            margin: theme.spacing.unit * 2
+        },
+        textManipulator: {}
     });
 
 export default newReceiptStyle;

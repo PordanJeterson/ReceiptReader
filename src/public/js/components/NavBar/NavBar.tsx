@@ -23,8 +23,8 @@ class NavBar extends Component<NavBarProps, {}> {
         return (
             <AppBar>
                 <div className={classes.root}>
-                    <Button component={AddReceiptLink} classes={{root: classes.button}} size="large"/>
-                    <Button component={ViewExpenseReportLink} classes={{root: classes.button}} size="large"/>
+                    <Button component={AddReceiptLink} classes={{root: classes.button}} size="large">Add Receipt</Button>
+                    <Button component={ViewExpenseReportLink} classes={{root: classes.button}} size="large">View Expense Reports</Button>
                 </div>
             </AppBar>
         );

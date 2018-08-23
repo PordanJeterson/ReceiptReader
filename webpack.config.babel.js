@@ -82,6 +82,9 @@ export default (environment) => {
             ],
             extensions: ['.ts', '.tsx', '.js', '.json']
         },
+        externals: {
+            'tesseract.js': "Tesseract"
+        },
         optimization: {
             minimize: toMinimize
         }
