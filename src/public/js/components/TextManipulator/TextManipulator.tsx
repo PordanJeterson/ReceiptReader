@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Component, Props } from 'react';
+import { ChangeEvent, Component } from 'react';
 import TextField from "@material-ui/core/TextField";
 import { WithStyles } from "@material-ui/core/styles";
 import textManipulatorStyle from './TextManipulatorStyle';
 import { Close } from "@material-ui/icons";
 import Button from "@material-ui/core/Button/Button";
 import withStyles from "@material-ui/core/styles/withStyles";
+import Input from "@material-ui/core/Input/Input";
 
 interface TextManipulatorProps extends WithStyles<typeof textManipulatorStyle> {
     id: string;
@@ -90,19 +91,34 @@ class TextManipulator extends Component<TextManipulatorProps, {}> {
         return text.split('\n');
     };
 
+    private handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        console.log(event);
+        const value = event.target.value;
+        this.setState(() => ({value}));
+        this.processInitialText(value);
+    };
+
     public render(): JSX.Element {
         const {id, name, label, onChange, classes} = this.props;
 
         return (
             <div className={classes.root}>
-                <textarea
-                    style={{
-                        height: this.state.lineDeleteElements ? `${this.state.lineDeleteElements.length * 3}em` : `10em`
+                <Input
+
+                    inputProps={{
+                        style: {
+                            height: this.state.lineDeleteElements ? `${this.state.lineDeleteElements.length * 3}em` : `10em`
+                        }
                     }}
-                    className={classes.textArea}
+                    multiline
+                    classes={{
+                        root: classes.input,
+                        input: classes.textArea
+                    }}
                     value={this.state.value}
                     name={name}
                     id={id}
+                    onChange={this.handleChange}
                 />
                 <div className={classes.deleteElements}>
                     {this.state.lineDeleteElements}
